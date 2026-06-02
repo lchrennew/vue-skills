@@ -1,6 +1,6 @@
 ---
-name: use-simple-slot
-description: "当编写使用Vue组件插槽（包括具名插槽和作用域插槽）的模板代码时，请使用此技能。它提供了最简单、最现代的语法（即 v-slot 的简写 #）。即使用户只是要求'向组件传递内容'或'使用组件的插槽'，也应触发此技能。"
+name: use-slot
+description: "Applies Vue's simplest slot syntax (v-slot shorthand #). Use when writing or modifying Vue templates that consume components with slots. Trigger even if user just says 'pass content to component' or 'use component slot'. Enforces # usage and prevents deprecated v-slot:/slot-scope syntax."
 ---
 
 # Vue 简易插槽使用指南
@@ -26,8 +26,13 @@ description: "当编写使用Vue组件插槽（包括具名插槽和作用域插
 - [ ] **独占默认插槽特例**：如果只有默认插槽，直接在组件上使用 `<my-component #="{ item }">`。
 - [ ] **隐式默认插槽**：在混合插槽中，如果默认插槽无作用域参数，直接省略 `<template>` 标签，将内容直接写在组件内部（顶层非 `<template>` 节点即为默认插槽内容）。
 - [ ] 确保组件标签使用的是 `kebab-case`（如 `<my-component>`，符合代码规范）。
+- [ ] **代码自检 (Validation)**：生成代码后，务必进行自检：确认没有遗留 `v-slot:`，且没有在混合插槽的情况下把 `#` 直接挂载到组件标签上。
 
 ## 常见陷阱 (Gotchas)
+
+**Bad vs Good 快速对比**：
+- ❌ 错误：`<template v-slot:header>` 或 `<template #default="props">`
+- ✅ 正确：`<template #header>` 或 `<template #="props">`
 
 - **混用简写和全写**：不要在同一个模板中混用 `v-slot:` 和 `#`，请统一使用 `#`。
 - **混合插槽的错误挂载**：当有多个插槽时，绝对不要把 `#` 挂载在组件标签本身上，这会导致编译错误或作用域混乱。此时必须老老实实使用 `<template>`。
@@ -36,5 +41,5 @@ description: "当编写使用Vue组件插槽（包括具名插槽和作用域插
 
 ## 深入了解与代码示例
 
-关于具体的代码示例、独占默认插槽用法、复杂的作用域插槽解构以及无渲染组件的使用方法，请阅读详细参考文档：
+如果你需要查看不同场景下的具体代码示例（如独占默认插槽、复杂解构、无渲染组件等），请立即使用读取工具读取以下参考文件：
 [[references/slot-details.md]]
