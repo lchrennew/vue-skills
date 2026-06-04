@@ -26,9 +26,10 @@ metadata:
 当你准备使用 ES 特性编写或重构代码时，必须遵循以下步骤：
 
 1. **评估代码重构点**：仔细阅读现有代码，找出冗余的 `if` 判断、旧式的 `apply` 调用、复杂的回调嵌套、多余的临时变量以及可以通过解构提取的对象属性。
-2. **渐进式读取文档**：根据需要重构的具体点，按需加载对应的特性示例文件，切勿在一开始读取所有文件：
+2. **渐进式读取文档**：根据需要重构的具体点，按需加载对应的特性示例文件,切勿在一开始读取所有文件：
    - 涉及变量赋值与属性提取：读取 [destructuring.js](references/examples/destructuring.js)、[optional-chaining.js](references/examples/optional-chaining.js)、[nullish-coalescing.js](references/examples/nullish-coalescing.js) 或 [nullish-coalescing-assignment.js](references/examples/nullish-coalescing-assignment.js)。
    - 涉及函数定义：读取 [arrow-functions.js](references/examples/arrow-functions.js)、[default-parameters.js](references/examples/default-parameters.js) 或 [rest-parameters.js](references/examples/rest-parameters.js)。
+   - 涉及函数返回值与控制流简化：读取 [return.js](references/examples/return.js)。
    - 涉及数据结构：读取 [spread-syntax.js](references/examples/spread-syntax.js) 或 [template-literals.js](references/examples/template-literals.js)。
    - 涉及异步操作：读取 [promise-await.js](references/examples/promise-await.js)、[for-await-of.js](references/examples/for-await-of.js) 或 [await-using.js](references/examples/await-using.js)。
    - 涉及条件判断简化：读取 [truthy-falsy.js](references/examples/truthy-falsy.js) 或 [instanceof.js](references/examples/instanceof.js)。
