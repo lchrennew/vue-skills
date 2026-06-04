@@ -32,12 +32,17 @@ metadata:
    - 涉及函数返回值与控制流简化：读取 [return.js](references/examples/return.js)。
    - 涉及数据结构：读取 [spread-syntax.js](references/examples/spread-syntax.js) 或 [template-literals.js](references/examples/template-literals.js)。
    - 涉及异步操作：读取 [promise-await.js](references/examples/promise-await.js)、[for-await-of.js](references/examples/for-await-of.js) 或 [await-using.js](references/examples/await-using.js)。
-   - 涉及条件判断简化：读取 [truthy-falsy.js](references/examples/truthy-falsy.js) 或 [instanceof.js](references/examples/instanceof.js)。
+   - 涉及条件判断简化：读取 [condition-simplify.js](references/examples/condition-simplify.js)（布尔值、数字、组合判断的激进简化）或 [truthy-falsy.js](references/examples/truthy-falsy.js)（truthy/falsy 基础概念）。
+   - 涉及类型判断：读取 [instanceof.js](references/examples/instanceof.js)。
    - 需要高级组合用法参考：读取 [combined-example-1.js](references/examples/combined-example-1.js) 和 [combined-example-2.js](references/examples/combined-example-2.js)。
 3. **应用 ES 特性**：
    - 只要能写成单行表达式的箭头函数，**必须**使用简写体。
    - 取代所有旧的 `&&` 短路判空，全面使用可选链 `?.`。
    - 全面拥抱假值 (Falsy) 特性，消除 `!== null && !== undefined` 这种啰嗦的判断。
+   - **激进简化布尔和数字判断**：
+     - `=== true/false` 一律简化为直接判断或 `!` 取反
+     - `!== 0` 一律简化为直接判断（利用 0 是假值）
+     - 多个独立的错误检查合并为单个 `||` 或 `&&` 表达式
    - 消除所有的 `arguments`，使用剩余参数 `...args`。
 4. **自查与验证**：在输出代码前，自行检查是否达到了“绝对精简”的目标，并确认代码逻辑没有因为过度简写而改变原始行为。
 
